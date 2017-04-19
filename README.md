@@ -31,7 +31,7 @@ You Can Refer The `xproject-common-web-starter-test` Module
 - 日志、配置文件依赖/覆盖。
 - 国际化支持。
 - HTTP基础库。
-- 请求、日志自动注入RequestID。
+- 消息头、日志自动注入X-RequestId。
 - Domain模型最佳实践（不引入外键约束）。
 - Spring Data JPA支持最佳实践示例。
 - 序列化、反序列化最佳实践示例。
