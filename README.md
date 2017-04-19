@@ -46,5 +46,10 @@ You Can Refer The `xproject-common-web-starter-test` Module
 - 通知中心。
 - 分布式追踪。
 - 横向扩展、高可用。
+- Base Entity（is_deleted、时间）。
+- RPC（Thrift/gRPC）。
+- 进程管理、Docker、K8S集成。
+- CQRS、Axon框架。
+- 失败重试。
 - 日志收集等。
 
