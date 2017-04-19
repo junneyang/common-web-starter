@@ -19,7 +19,7 @@ You Can Refer The `xproject-common-web-starter-test` Module
 		</dependency>
 	</dependencies>
 ```
-- Enjoy Your First App
+- Start To Enjoy Your First App !
 
 ### 1.2、特性:    
 目前提供的特性如下：
@@ -38,10 +38,13 @@ You Can Refer The `xproject-common-web-starter-test` Module
 
 
 待添加特性：
-- OAuth2权限管理
-- 二级缓存、分布式缓存
-- 任务队列
-- 定时任务
-- 分布式事务
-- 通知中心
+- OAuth2权限管理。
+- 二级缓存、分布式缓存。
+- 任务队列。
+- 定时任务。
+- 分布式事务。
+- 通知中心。
+- 分布式追踪。
+- 横向扩展、高可用。
+- 日志收集等。
 
