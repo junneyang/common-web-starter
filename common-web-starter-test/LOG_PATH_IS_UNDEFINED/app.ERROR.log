@@ -1,0 +1,112 @@
+[31m[00000000-0000-0000-0000-000000000000][0;39m [2m2017-04-16-14:03:04.470[0;39m [31m[ERROR][0;39m [35m13264[0;39m [2m[restartedMain  ][0;39m [2m---[0;39m [36m[o.s.b.d.LoggingFailureAnalysisReporter  ][0;39m [34m[  42][0;39m [2m:[0;39m 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Cannot determine embedded database driver class for database type NONE
+
+Action:
+
+If you want an embedded database please put a supported one on the classpath. If you have database settings to be loaded from a particular profile you may need to active it (no profiles are currently active).
+
+[31m[00000000-0000-0000-0000-000000000000][0;39m [2m2017-04-16-15:37:45.373[0;39m [31m[ERROR][0;39m [35m15233[0;39m [2m[restartedMain  ][0;39m [2m---[0;39m [36m[o.s.b.d.LoggingFailureAnalysisReporter  ][0;39m [34m[  42][0;39m [2m:[0;39m 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Cannot determine embedded database driver class for database type NONE
+
+Action:
+
+If you want an embedded database please put a supported one on the classpath. If you have database settings to be loaded from a particular profile you may need to active it (the profiles "prod" are currently active).
+
+[31m[00000000-0000-0000-0000-000000000000][0;39m [2m2017-04-16-15:39:05.100[0;39m [31m[ERROR][0;39m [35m15410[0;39m [2m[restartedMain  ][0;39m [2m---[0;39m [36m[o.s.b.d.LoggingFailureAnalysisReporter  ][0;39m [34m[  42][0;39m [2m:[0;39m 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Cannot determine embedded database driver class for database type NONE
+
+Action:
+
+If you want an embedded database please put a supported one on the classpath. If you have database settings to be loaded from a particular profile you may need to active it (the profiles "prod" are currently active).
+
+[31m[00000000-0000-0000-0000-000000000000][0;39m [2m2017-04-16-15:56:30.798[0;39m [31m[ERROR][0;39m [35m15888[0;39m [2m[restartedMain  ][0;39m [2m---[0;39m [36m[o.s.b.d.LoggingFailureAnalysisReporter  ][0;39m [34m[  42][0;39m [2m:[0;39m 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Cannot determine embedded database driver class for database type NONE
+
+Action:
+
+If you want an embedded database please put a supported one on the classpath. If you have database settings to be loaded from a particular profile you may need to active it (the profiles "prod" are currently active).
+
+[31m[00000000-0000-0000-0000-000000000000][0;39m [2m2017-04-16-18:49:55.489[0;39m [31m[ERROR][0;39m [35m16820[0;39m [2m[restartedMain  ][0;39m [2m---[0;39m [36m[o.s.b.d.LoggingFailureAnalysisReporter  ][0;39m [34m[  42][0;39m [2m:[0;39m 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Cannot determine embedded database driver class for database type NONE
+
+Action:
+
+If you want an embedded database please put a supported one on the classpath. If you have database settings to be loaded from a particular profile you may need to active it (the profiles "prod" are currently active).
+
+[31m[00000000-0000-0000-0000-000000000000][0;39m [2m2017-04-16-18:50:16.917[0;39m [31m[ERROR][0;39m [35m16875[0;39m [2m[restartedMain  ][0;39m [2m---[0;39m [36m[o.s.b.d.LoggingFailureAnalysisReporter  ][0;39m [34m[  42][0;39m [2m:[0;39m 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Cannot determine embedded database driver class for database type NONE
+
+Action:
+
+If you want an embedded database please put a supported one on the classpath. If you have database settings to be loaded from a particular profile you may need to active it (the profiles "base,prod" are currently active).
+
+[31m[00000000-0000-0000-0000-000000000000][0;39m [2m2017-04-16-18:53:47.542[0;39m [31m[ERROR][0;39m [35m17106[0;39m [2m[restartedMain  ][0;39m [2m---[0;39m [36m[o.s.b.d.LoggingFailureAnalysisReporter  ][0;39m [34m[  42][0;39m [2m:[0;39m 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Cannot determine embedded database driver class for database type NONE
+
+Action:
+
+If you want an embedded database please put a supported one on the classpath. If you have database settings to be loaded from a particular profile you may need to active it (the profiles "prod" are currently active).
+
+[31m[00000000-0000-0000-0000-000000000000][0;39m [2m2017-04-16-19:38:41.023[0;39m [31m[ERROR][0;39m [35m17873[0;39m [2m[restartedMain  ][0;39m [2m---[0;39m [36m[o.s.b.d.LoggingFailureAnalysisReporter  ][0;39m [34m[  42][0;39m [2m:[0;39m 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Cannot determine embedded database driver class for database type NONE
+
+Action:
+
+If you want an embedded database please put a supported one on the classpath. If you have database settings to be loaded from a particular profile you may need to active it (the profiles "prod" are currently active).
+

@@ -1,0 +1,5 @@
+<!-- Logback configuration. See https://logback.qos.ch/manual/index.html -->
+<!DOCTYPE xml>
+<configuration scan="true" scanPeriod="10 seconds">
+	<include resource="logback-base.xml" />
+</configuration>

@@ -1,0 +1,9 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.xcompany.xproject.common.web.starter.CommonWebConfiguration,\
+com.xcompany.xproject.common.web.starter.CommonWebConfigurationSwagger,\
+com.xcompany.xproject.common.web.starter.CommonWebConfigurationLogFilter,\
+com.xcompany.xproject.common.web.starter.exception.CommonExceptionHandler,\
+com.xcompany.xproject.common.web.starter.converter.StringToTimeStampConverter,\
+com.xcompany.xproject.common.web.starter.api.CommonWebConfigurationApiDoc,\
+com.xcompany.xproject.common.web.starter.context.ApplicationContextProvider
+
