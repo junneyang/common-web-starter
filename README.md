@@ -22,7 +22,7 @@ You Can Refer The `xproject-common-web-starter-test` Module
 - Enjoy Your First App
 
 ### 1.2、特性:    
-common-web-starter旨在提供完善的Web开发基础组件，对业务方屏蔽各种依赖、配置、库、日志、异常处理、权限、API文档等问题，使业务方专注于应用逻辑。目前提供的特性如下：
+目前提供的特性如下：
 - 全局日志Filter。
 - 全局异常处理。
 - Swagger、apiDoc文档支持。
