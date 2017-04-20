@@ -1,79 +1,45 @@
 package com.xcompany.xproject.common.web.starter.test.user.domain;
 
-import java.util.Date;
+import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import com.xcompany.xproject.common.web.entity.BaseEntity;
+
 @Entity
-@Table(name = "tbl_user_detail") 
-public class UserDetail {
+//@Table(name = "tbl_user_detail")
+public class UserDetail extends BaseEntity implements Serializable {
 
-		@Id
-		private String user;
-		
-		@Column(name = "address", nullable=false, length=128)
-		//@NotNull
-		@NotEmpty
-		//@NotBlank
-		private String address;
+	private static final long serialVersionUID = 3449016394840912139L;
 
+	@NotNull
+	@Column(nullable = false, length = 36)
+	private String userId;
 
-		@Column(name = "createtime", updatable = false)
-		@Temporal(TemporalType.TIMESTAMP)  
-		@CreationTimestamp
-		private Date createtime;
-		
-		@Column(name = "updatetime", nullable=false)
-		//@Temporal(TemporalType.TIMESTAMP)  
-		@UpdateTimestamp
-		private Date updatetime;
+	@Column(nullable = false, length = 128)
+	// @NotNull
+	@NotEmpty
+	// @NotBlank
+	private String address;
 
-		public String getAddress() {
-			return address;
-		}
+	public String getUserId() {
+		return userId;
+	}
 
-		public String getUser() {
-			return user;
-		}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 
-		public void setUser(String user) {
-			this.user = user;
-		}
+	public String getAddress() {
+		return address;
+	}
 
-		public void setAddress(String address) {
-			this.address = address;
-		}
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
-		public Date getCreatetime() {
-			return createtime;
-		}
-
-		public void setCreatetime(Date createtime) {
-			this.createtime = createtime;
-		}
-
-		public Date getUpdatetime() {
-			return updatetime;
-		}
-
-		public void setUpdatetime(Date updatetime) {
-			this.updatetime = updatetime;
-		}
-
-		@Override
-		public String toString() {
-			return "UserDetail [address=" + address + ", user=" + user
-					+ ", createtime=" + createtime + ", updatetime="
-					+ updatetime + "]";
-		}
-	
 }

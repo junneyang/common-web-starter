@@ -4,9 +4,11 @@ com/xcompany/xproject/common/web/starter/exception/CommonException.class
 com/xcompany/xproject/common/web/starter/exception/NetworkException.class
 com/xcompany/xproject/common/web/starter/http/RequestEntry.class
 com/xcompany/xproject/common/web/starter/exception/BusinessException.class
+com/xcompany/xproject/common/web/entity/BaseEntity.class
 com/xcompany/xproject/common/web/starter/CommonWebConfigurationService.class
 com/xcompany/xproject/common/web/starter/CommonWebConfigurationProperties.class
 com/xcompany/xproject/common/web/starter/exception/ParamsException.class
+com/xcompany/xproject/common/web/starter/CommonWebConfigurationHibernateJpaSessionFactory.class
 com/xcompany/xproject/common/web/starter/CommonWebConfigurationSwagger.class
 com/xcompany/xproject/common/web/starter/api/CommonWebConfigurationApiDoc.class
 com/xcompany/xproject/common/web/starter/context/ApplicationContextProvider.class

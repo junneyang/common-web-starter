@@ -5,20 +5,24 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import org.hibernate.SQLQuery;
+import org.hibernate.SessionFactory;
+import org.hibernate.transform.AliasToBeanResultTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Repository;
+
+import com.xcompany.xproject.common.web.starter.test.user.serializers.UserDetailSerializer;
+import com.xcompany.xproject.common.web.starter.test.user.serializers.UserSerializer;
 
 @Repository
 public class UserRepositoryCustom {
@@ -27,11 +31,15 @@ public class UserRepositoryCustom {
 	private UserRepository userRepository;
 	
 	// Multi Table
-	@PersistenceContext
-	private EntityManager entityManager;
+	//@PersistenceContext
+	//private EntityManager entityManager;
+	// Replace JPA EntityManager With SessionFactory To Use The setResultTransformer
+	@Autowired
+	private SessionFactory sessionFactory;
 	
-	public Page<User> listUser(final String name, 
-			final Timestamp starttime, final Timestamp endtime,
+	
+	public Page<UserSerializer> listUser(final String name, 
+			final Timestamp startTime, final Timestamp endTime,
 			Pageable pageable) {
 		
 		Specification<User> specification = new Specification<User>() {
@@ -45,8 +53,8 @@ public class UserRepositoryCustom {
 				if (null != name) {
 					predicates.add(cb.like(root.get("name").as(String.class), "%" + name + "%"));
 				}
-				if (null != starttime && null != endtime) {
-					predicates.add(cb.between(root.get("createtime").as(Timestamp.class), starttime, endtime));
+				if (null != startTime && null != endTime) {
+					predicates.add(cb.between(root.get("createTime").as(Timestamp.class), startTime, endTime));
 				}
 				
 //				Join<Object, Object> user = root.join("userDetail", JoinType.LEFT);
@@ -58,13 +66,20 @@ public class UserRepositoryCustom {
 			}
 			
 		};
+		
 		Page<User> users = this.userRepository.findAll(specification , pageable);
-		return users;
+		List<UserSerializer> results = new ArrayList<UserSerializer>();
+		for (User user : users ) {
+			results.add(new UserSerializer(user.getId(), user.getName(), 
+					user.getCreateTime(), user.getUpdateTime()));
+		}
+		
+		return new PageImpl<UserSerializer>(results, pageable, users.getTotalElements());
 	}
 	
     @SuppressWarnings("unchecked")
-	public Page<Object> listUserCustom(final String name, 
-			final Timestamp starttime, final Timestamp endtime,
+	public Page<List<UserDetailSerializer>> listUserCustom(final String name, 
+			final Timestamp startTime, final Timestamp endTime,
 			Pageable pageable) {
     	
 //    	String sql = "SELECT "
@@ -74,65 +89,79 @@ public class UserRepositoryCustom {
 //    			+ "ON u.id = ud.user "
 //    			+ "WHERE u.name LIKE ?1 AND u.createtime BETWEEN ?2 AND ?3";
     	
+		
     	StringBuilder sql = new StringBuilder();
     	StringBuilder sql_count = new StringBuilder();
     	
-    	String common = "FROM tbl_user u "
-    			+ "LEFT OUTER JOIN tbl_user_detail ud "
-    			+ "ON u.id = ud.user "
+    	String common = "FROM user u "
+    			+ "LEFT OUTER JOIN user_detail ud "
+    			+ "ON u.id = ud.user_id "
     			+ "WHERE 1 = 1 ";
     	
-    	sql.append("SELECT u.id, u.name, u.createtime, u.updatetime, ud.address ");
+    	sql.append("SELECT u.id AS id, u.name AS name, u.create_time as createTime, u.update_time AS updateTime, ud.address AS address ");
     	sql_count.append("SELECT COUNT(*) ");
     	
     	sql.append(common);
     	sql_count.append(common);
 
     	if (null != name) {
-    		String tmp = "AND u.name LIKE ?1 ";
+    		String tmp = "AND u.name LIKE :name ";
     		sql.append(tmp);
     		sql_count.append(tmp);
     	}
-    	if (null != starttime && null != endtime) {
-    		String tmp = "AND u.createtime BETWEEN ?2 AND ?3 ";
+    	if (null != startTime && null != endTime) {
+    		String tmp = "AND u.create_time BETWEEN :startTime AND :endTime ";
     		sql.append(tmp);
     		sql_count.append(tmp);
     	}
+    	Sort sort = pageable.getSort();
+    	if (null != sort) {
+    		String tmp = "ORDER BY " + sort.toString().replace(":", "");
+			sql.append(tmp);
+		}
+
     	     
-        
-		Query query = entityManager.createNativeQuery(sql.toString());
-		Query countQuery = entityManager.createNativeQuery(sql_count.toString());
+    	SQLQuery query = sessionFactory.getCurrentSession().createSQLQuery(sql.toString());
+    	SQLQuery countQuery = sessionFactory.getCurrentSession().createSQLQuery(sql_count.toString());
+    	
+//		Query query = entityManager.createNativeQuery(sql.toString());
+//		Query countQuery = entityManager.createNativeQuery(sql_count.toString());
 		
 		if (null != name) {
-			query.setParameter(1, "%" + name + "%");
-			countQuery.setParameter(1, "%" + name + "%");
+			query.setParameter("name", "%" + name + "%");
+			countQuery.setParameter("name", "%" + name + "%");
 		}
-		if (null != starttime && null != endtime) {
-			query.setParameter(2, starttime);
-			query.setParameter(3, endtime);
-			countQuery.setParameter(2, starttime);
-			countQuery.setParameter(3, endtime);
+		if (null != startTime && null != endTime) {
+			query.setParameter("startTime", startTime);
+			query.setParameter("endTime", endTime);
+			countQuery.setParameter("startTime", startTime);
+			countQuery.setParameter("endTime", endTime);
 		}
-		
-		Long total = ((BigInteger)countQuery.getSingleResult()).longValue();
+
 		
 		query.setMaxResults(pageable.getPageSize());
 		query.setFirstResult(pageable.getPageSize() * pageable.getPageNumber());
 		
-//		List<QueryUserSerializer> results = new ArrayList<QueryUserSerializer>();
+		
+		//Long total = ((BigInteger)countQuery.getSingleResult()).longValue();
+		Long total = ((BigInteger)countQuery.uniqueResult()).longValue();
+		
+//		List<QueryUserDetailSerializer> results = new ArrayList<QueryUserDetailSerializer>();
 //		
 //		List<?> rows = query.getResultList();
 //		for (Object row : rows) {
 //			Object[] cells = (Object[]) row;
 //			String id = (String) cells[0];
 //			String namet = (String) cells[1];
-//			Timestamp createtime = (Timestamp) cells[2];
-//			Timestamp updatetime = (Timestamp) cells[3];
+//			Timestamp createTime = (Timestamp) cells[2];
+//			Timestamp updateTime = (Timestamp) cells[3];
 //			String address = (String) cells[4];
-//			results.add(new QueryUserSerializer(id, namet, createtime, updatetime, address));
+//			results.add(new QueryUserDetailSerializer(id, namet, createTime, updateTime, address));
 //		}
-		
-		return new PageImpl<Object>(query.getResultList(), pageable, total);
+	
+		//return new PageImpl<Object[]>(query.getResultList(), pageable, total);
+		query.setResultTransformer(new AliasToBeanResultTransformer(UserDetailSerializer.class));
+		return new PageImpl<List<UserDetailSerializer>>(query.list(), pageable, total);
     }
 	
 }

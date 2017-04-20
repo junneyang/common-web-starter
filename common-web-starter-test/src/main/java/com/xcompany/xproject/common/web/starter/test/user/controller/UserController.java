@@ -24,6 +24,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.xcompany.xproject.common.web.starter.constant.ResponseCode;
 import com.xcompany.xproject.common.web.starter.exception.ParamsException;
 import com.xcompany.xproject.common.web.starter.http.APIResponse;
+import com.xcompany.xproject.common.web.starter.http.ResponseEntry;
+import com.xcompany.xproject.common.web.starter.test.user.serializers.AddUserSerializer;
 import com.xcompany.xproject.common.web.starter.test.user.service.UserService;
 
 //Spring Profiles provide a way to segregate parts of your application configuration 
@@ -98,7 +100,7 @@ public class UserController {
 	 */
 	@RequestMapping(value="/v1/test/", method=RequestMethod.GET, 
 			produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public Object test(@RequestParam(name="name", required=false) String name) throws Exception {
+	public ResponseEntry test(@RequestParam(name="name", required=false) String name) throws Exception {
 		LOGGER.info(name);
 		
 		LOGGER.info(environment.toString());
@@ -127,7 +129,7 @@ public class UserController {
 	//uuid: [0-9a-z]{32}
 	@RequestMapping(value="/v1/{id:[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}}/", method=RequestMethod.GET, 
 			produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public Object getUser(@PathVariable UUID id) throws Exception {	
+	public ResponseEntry getUser(@PathVariable UUID id) throws Exception {	
 
 		return new APIResponse().createBuilder().
 				setCode(ResponseCode.SUCCESS)
@@ -140,31 +142,27 @@ public class UserController {
 	
 	@RequestMapping(value="/v1/", method=RequestMethod.POST, 
 			consumes=MediaType.APPLICATION_JSON_UTF8_VALUE, produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public Object addUser(@Valid @RequestBody AddUserSerializer userSerializer, BindingResult bindingResult) throws Exception {	
+	public ResponseEntry addUser(@Valid @RequestBody AddUserSerializer userSerializer, BindingResult bindingResult) throws Exception {	
 		
 		if (bindingResult.hasErrors()) {
 			throw new ParamsException(4001, null, null, bindingResult);
 		}
 		
-		LOGGER.info(userSerializer.toString());
-		QueryUserSerializer queryUserSerializer = this.userService.addUser(userSerializer.getName(), userSerializer.getPassword());
-		LOGGER.info(queryUserSerializer.toString());
-
 		return new APIResponse().createBuilder().
 				setCode(ResponseCode.SUCCESS)
 				.setObjects(null)
-				.setData(queryUserSerializer)
+				.setData(this.userService.addUser(userSerializer.getName(), userSerializer.getPassword()))
 				.setErrors(null)
 				.build().getEntry();
 	}
 	
-	//?size=10&page=0&sort=name,asc&sort=createtime,asc&name=bbb&starttime=1492417764000&endtime=1492417767000
+	//?size=2&page=0&sort=name,asc&sort=createTime,asc&startTime=1492417764000&endTime=2492417764000&name=aaa
 	@RequestMapping(value="/v1/", method=RequestMethod.GET, 
 			produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public Object listUser(
+	public ResponseEntry listUser(
 			@RequestParam(name="name", required=false) String name,
-			@RequestParam(name="starttime", required=false) Timestamp starttime,
-			@RequestParam(name="endtime", required=false) Timestamp endtime,
+			@RequestParam(name="startTime", required=false) Timestamp startTime,
+			@RequestParam(name="endTime", required=false) Timestamp endTime,
 			
 			@PageableDefault(page=0, size=10, sort = { "id" }, direction = Sort.Direction.DESC) 
 			Pageable pageable
@@ -173,29 +171,28 @@ public class UserController {
 		return new APIResponse().createBuilder().
 				setCode(ResponseCode.SUCCESS)
 				.setObjects(null)
-				.setData(userService.listUser(name, starttime, endtime, pageable))
+				.setData(this.userService.listUser(name, startTime, endTime, pageable))
 				.setErrors(null)
 				.build().getEntry();
 		
 	}
 	
-	//?size=2&page=0&sort=name,asc&sort=createtime,asc&starttime=1492417764000&endtime=2492417764000&name=bb
+	//?size=3&page=0&sort=name,asc&sort=createTime,desc&startTime=1492417764000&endTime=2492417764000&name=aaa
 	@RequestMapping(value="/v1/custom/", method=RequestMethod.GET, 
 			produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public Object listUserCustom(
+	public ResponseEntry listUserCustom(
 			@RequestParam(name="name", required=false) String name,
-			@RequestParam(name="starttime", required=false) Timestamp starttime,
-			@RequestParam(name="endtime", required=false) Timestamp endtime,
+			@RequestParam(name="startTime", required=false) Timestamp startTime,
+			@RequestParam(name="endTime", required=false) Timestamp endTime,
 			
 			@PageableDefault(page=0, size=10, sort = { "id" }, direction = Sort.Direction.DESC) 
 			Pageable pageable
 			) throws Exception {	
 
-		LOGGER.info(pageable.toString());
 		return new APIResponse().createBuilder().
 				setCode(ResponseCode.SUCCESS)
 				.setObjects(null)
-				.setData(userService.listUserCustom(name, starttime, endtime, pageable))
+				.setData(this.userService.listUserCustom(name, startTime, endTime, pageable))
 				.setErrors(null)
 				.build().getEntry();
 		

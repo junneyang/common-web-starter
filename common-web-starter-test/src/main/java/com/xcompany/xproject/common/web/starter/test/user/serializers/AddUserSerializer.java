@@ -1,4 +1,4 @@
-package com.xcompany.xproject.common.web.starter.test.user.controller;
+package com.xcompany.xproject.common.web.starter.test.user.serializers;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
