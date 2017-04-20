@@ -1,8 +1,7 @@
 # common-web-starter
------------
 基于Springboot自定义starter, 旨在提供完善的Web开发基础组件，对业务方屏蔽各种依赖、配置、库、日志、异常处理、权限、API文档等问题，使业务方专注于应用逻辑。项目持续开发。
 
-### 1.1、使用:    
+## 1.使用:    
 - Clone This Repository
 ```
 git clone https://github.com/junneyang/common-web-starter.git
@@ -22,10 +21,10 @@ You Can Refer The `xproject-common-web-starter-test` Module
 ```
 - Start To Enjoy Your First App !
 
-### 1.2、特性:    
+## 2.特性:    
 目前提供的以及计划支持的特性如下：
 
-#### 通用部分
+### 2.1.通用部分
 - [x] 日志Filter。
 - [x] 消息头、日志自动注入X-RequestId。
 - [x] 异常处理、异常基础类。
@@ -35,20 +34,20 @@ You Can Refer The `xproject-common-web-starter-test` Module
 - [x] 日志、配置文件依赖/覆盖。
 - [x] 模块化架构开发。
 
-#### Controller部分
+### 2.2.Controller部分    
 - [x] String与TimeStamp自动转换。
 - [x] HTTP请求、响应、状态码基础库。
 
-#### Domain部分
+### 2.3.Domain部分    
 - [x] BaseEntity支持。
 - [x] Domain模型最佳实践, 不引入外键约束。
 - [x] Hibernate SessionFactory As Supplement Of JPA EntityManager。
 - [x] Spring Data JPA/Hibernate支持最佳实践示例，连表、分页、查询完善实例。
 
-#### 序列化部分
+### 2.4.序列化部分
 - [x] 序列化、反序列化最佳实践示例。
 
-#### 其他
+### 2.5.其他
 - [ ] OAuth2权限管理。
 - [ ] 二级缓存、分布式缓存。
 - [ ] 任务队列。
