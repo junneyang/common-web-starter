@@ -23,17 +23,18 @@ You Can Refer The `xproject-common-web-starter-test` Module
 
 ### 1.2、特性:    
 目前提供的特性如下：
-- 全局日志Filter。
+- []全局日志Filter。
 - 全局异常处理。
 - Swagger、apiDoc文档支持。
 - String与TimeStamp自动转换。
 - 全局Context自动注入、引用。
+- Hibernate SessionFactory As Supplement Of JPA EntityManager。
 - 日志、配置文件依赖/覆盖。
 - 国际化支持。
-- HTTP基础库。
+- HTTP请求、响应基础库。
 - 消息头、日志自动注入X-RequestId。
-- Domain模型最佳实践（不引入外键约束）。
-- Spring Data JPA支持最佳实践示例。
+- Domain模型最佳实践（不引入外键约束、BaseEntity支持）。
+- Spring Data JPA/Hibernate支持最佳实践示例，连表、分页、查询完美实例。
 - 序列化、反序列化最佳实践示例。
 
 
@@ -46,8 +47,9 @@ You Can Refer The `xproject-common-web-starter-test` Module
 - 通知中心。
 - 分布式追踪。
 - 横向扩展、高可用。
-- Base Entity（is_deleted、时间）。
+- ~~Base Entity（is_deleted、时间）。~~
 - RPC（Thrift/gRPC）。
+- 同步、异步。
 - 进程管理、Docker、K8S集成。
 - CQRS、Axon框架。
 - 失败重试。
