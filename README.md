@@ -23,6 +23,7 @@ You Can Refer The `xproject-common-web-starter-test` Module
 
 ### 1.2、特性:    
 目前提供的以及计划支持的特性如下：
+
     
 - [x] 日志Filter。
 - [x] 消息头、日志自动注入X-RequestId。
@@ -35,13 +36,16 @@ You Can Refer The `xproject-common-web-starter-test` Module
     
 - [x] String与TimeStamp自动转换。
 - [x] HTTP请求、响应、状态码基础库。
+
     
 - [x] BaseEntity支持。
 - [x] Domain模型最佳实践, 不引入外键约束。
 - [x] Hibernate SessionFactory As Supplement Of JPA EntityManager。
 - [x] Spring Data JPA/Hibernate支持最佳实践示例，连表、分页、查询完善实例。
+
     
 - [x] 序列化、反序列化最佳实践示例。
+
     
 - [ ] OAuth2权限管理。
 - [ ] 二级缓存、分布式缓存。
