@@ -23,7 +23,7 @@ You Can Refer The `xproject-common-web-starter-test` Module
 
 ### 1.2、特性:    
 目前提供的特性如下：
-- [] 全局日志Filter。
+. [] 全局日志Filter。
 - 全局异常处理。
 - Swagger、apiDoc文档支持。
 - String与TimeStamp自动转换。
