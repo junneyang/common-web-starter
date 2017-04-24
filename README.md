@@ -49,7 +49,7 @@ You Can Refer The `xproject-common-web-starter-test` Module
 
 ### 2.5.Other
 - [ ] OAuth2权限管理。
-- [ ] 二级缓存、分布式缓存。
+- [ ] 二级缓存、分布式缓存(spring boot 1.5.2 默认支持 hazelcast-3.7.5)。
 - [ ] 任务队列。
 - [ ] 定时任务。
 - [ ] 分布式事务。
