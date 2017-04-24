@@ -20,6 +20,7 @@
 /opt/java/workspace/xproject/common-web-starter/src/main/java/com/xcompany/xproject/common/web/starter/constant/ResponseCode.java
 /opt/java/workspace/xproject/common-web-starter/src/main/java/com/xcompany/xproject/common/web/starter/CommonWebConfigurationHibernateJpaSessionFactory.java
 /opt/java/workspace/xproject/common-web-starter/src/main/java/com/xcompany/xproject/common/web/starter/exception/CommonException.java
+/opt/java/workspace/xproject/common-web-starter/src/main/java/com/xcompany/xproject/common/web/starter/EnableCommonWebConfiguration.java
 /opt/java/workspace/xproject/common-web-starter/src/main/java/com/xcompany/xproject/common/web/starter/api/CommonWebConfigurationApiDoc.java
 /opt/java/workspace/xproject/common-web-starter/src/main/java/com/xcompany/xproject/common/web/starter/converter/StringToTimeStampConverter.java
 /opt/java/workspace/xproject/common-web-starter/src/main/java/com/xcompany/xproject/common/web/starter/CommonWebConfigurationLogFilter.java

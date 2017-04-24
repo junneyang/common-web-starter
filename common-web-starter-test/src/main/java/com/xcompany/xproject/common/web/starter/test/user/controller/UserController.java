@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.xcompany.xproject.common.web.starter.CommonWebConfigurationService;
 import com.xcompany.xproject.common.web.starter.constant.ResponseCode;
 import com.xcompany.xproject.common.web.starter.exception.ParamsException;
 import com.xcompany.xproject.common.web.starter.http.APIResponse;
@@ -43,6 +44,8 @@ public class UserController {
 	private Environment environment;
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private CommonWebConfigurationService commonWebConfigurationService;
 	
 	/**
 	 * @apiDefine CommonResponseParams
@@ -106,6 +109,7 @@ public class UserController {
 		LOGGER.info(environment.toString());
 		LOGGER.info(environment.getProperty("local.server.port"));
 		LOGGER.info(environment.getProperty("spring.application.name"));
+		LOGGER.info(this.commonWebConfigurationService.sayHello());
 		
 		if (environment.getProperty("spring.main.show-banner").equals("true")) {
 			//throw new PermissionException(3000, null, null);

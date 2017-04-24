@@ -4,8 +4,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.xcompany.xproject.common.web.starter.EnableCommonWebConfiguration;
+
 //same as @Configuration @EnableAutoConfiguration @ComponentScan
 @SpringBootApplication
+@EnableCommonWebConfiguration
 @RestController
 public class Application {
 

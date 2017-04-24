@@ -1,5 +1,5 @@
+# com.xcompany.xproject.common.web.starter.CommonWebConfiguration,\
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.xcompany.xproject.common.web.starter.CommonWebConfiguration,\
 com.xcompany.xproject.common.web.starter.CommonWebConfigurationSwagger,\
 com.xcompany.xproject.common.web.starter.CommonWebConfigurationLogFilter,\
 com.xcompany.xproject.common.web.starter.exception.CommonExceptionHandler,\
