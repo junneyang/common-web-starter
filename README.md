@@ -65,12 +65,12 @@ You Can Refer The `xproject-common-web-starter-test` Module
 - [ ] 日志收集等。
 
 [^_^]:
-## 3.Release Notes:
-### 1.0.0-RELEASE
-- 2.1
-- 2.2 
-- 2.3
-- 2.4
+    ## 3.Release Notes:
+    ### 1.0.0-RELEASE
+    - 2.1
+    - 2.2 
+    - 2.3
+    - 2.4
 
 
 
