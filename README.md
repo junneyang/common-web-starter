@@ -64,7 +64,7 @@ You Can Refer The `xproject-common-web-starter-test` Module
 - [ ] 失败重试。
 - [ ] 日志收集等。
 
-[^_^]:    
+[//]: #   
     ## 3.Release Notes:
     ### 1.0.0-RELEASE
     - 2.1
