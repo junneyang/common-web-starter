@@ -4,6 +4,7 @@
 /opt/java/workspace/xproject/common-web-starter-test/src/main/java/com/xcompany/xproject/common/web/starter/test/user/domain/UserDetail.java
 /opt/java/workspace/xproject/common-web-starter-test/src/main/java/com/xcompany/xproject/common/web/starter/test/user/serializers/UserSerializer.java
 /opt/java/workspace/xproject/common-web-starter-test/src/main/java/com/xcompany/xproject/common/web/starter/test/Application.java
+/opt/java/workspace/xproject/common-web-starter-test/src/main/java/com/xcompany/xproject/common/web/starter/test/user/service/UserServiceImpl.java
 /opt/java/workspace/xproject/common-web-starter-test/src/main/java/com/xcompany/xproject/common/web/starter/test/user/domain/UserRepository.java
 /opt/java/workspace/xproject/common-web-starter-test/src/main/java/com/xcompany/xproject/common/web/starter/test/user/controller/UserController.java
 /opt/java/workspace/xproject/common-web-starter-test/src/main/java/com/xcompany/xproject/common/web/starter/test/user/domain/UserDetailRepository.java

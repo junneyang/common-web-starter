@@ -9,6 +9,8 @@ import com.xcompany.xproject.common.web.starter.EnableCommonWebConfiguration;
 //same as @Configuration @EnableAutoConfiguration @ComponentScan
 @SpringBootApplication
 @EnableCommonWebConfiguration
+//@EnableAuthorizationServer
+//@EnableResourceServer
 @RestController
 public class Application {
 
@@ -16,18 +18,15 @@ public class Application {
 		// TODO Auto-generated method stub
 		SpringApplication.run(Application.class, args);
 	}
-	
-/*	@Bean
-    public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
-        return args -> {
 
-            System.out.println("Let's inspect the beans provided by Spring Boot:");
-
-            String[] beanNames = ctx.getBeanDefinitionNames();
-            Arrays.sort(beanNames);
-            for (String beanName : beanNames) {
-                System.out.println(beanName);
-            }
-        };
-    }*/
+	/*
+	 * @Bean public CommandLineRunner commandLineRunner(ApplicationContext ctx)
+	 * { return args -> {
+	 * 
+	 * System.out.println("Let's inspect the beans provided by Spring Boot:");
+	 * 
+	 * String[] beanNames = ctx.getBeanDefinitionNames();
+	 * Arrays.sort(beanNames); for (String beanName : beanNames) {
+	 * System.out.println(beanName); } }; }
+	 */
 }

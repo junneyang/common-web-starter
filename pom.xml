@@ -49,6 +49,20 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency> -->
+        <!-- <dependency>
+			<groupId>org.springframework.security.oauth</groupId>
+			<artifactId>spring-security-oauth2</artifactId>
+		</dependency> -->
+
+		<!-- Spring Session Redis-->
+		<!-- <dependency>
+			<groupId>org.springframework.session</groupId>
+			<artifactId>spring-session</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency> -->
 
         <!-- Document -->
         <dependency>
@@ -98,6 +112,7 @@
 	<modules>
 		<module>common-web-starter</module>
 		<module>common-web-starter-test</module>
+		<module>common-web-starter-aaa</module>
 	</modules>
 
 	<build>

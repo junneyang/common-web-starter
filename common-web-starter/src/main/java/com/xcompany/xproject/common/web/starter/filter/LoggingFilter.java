@@ -3,8 +3,6 @@ package com.xcompany.xproject.common.web.starter.filter;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.Filter;
@@ -26,8 +24,6 @@ import org.springframework.http.MediaType;
 import org.springframework.web.util.ContentCachingRequestWrapper;
 import org.springframework.web.util.ContentCachingResponseWrapper;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.xcompany.xproject.common.web.starter.http.RequestEntry;
 
 public class LoggingFilter implements Filter {
@@ -78,11 +74,18 @@ public class LoggingFilter implements Filter {
         } finally {
         	LOGGER.info("====================POST_FILTER====================");
             String requestBody = new String(requestWrapper.getContentAsByteArray());
+            
             if (requestBody.length() > 0) {
-            	ObjectMapper mapper = new ObjectMapper();
-                Map<String, Object> map = new HashMap<String, Object>();
-                map = mapper.readValue(requestBody, new TypeReference<Map<String, Object>>() {});
-                LOGGER.info(String.format("REQUEST_BODY %s" , map));
+//            	if (requestWrapper.getContentType().equals(MediaType.APPLICATION_JSON_UTF8_VALUE)) {
+//            		ObjectMapper mapper = new ObjectMapper();
+//                    Map<String, Object> map = new HashMap<String, Object>();
+//                    map = mapper.readValue(requestBody, new TypeReference<Map<String, Object>>() {});
+//                    LOGGER.info(String.format("REQUEST_BODY %s" , map));
+//    			} else {
+//    				LOGGER.info(String.format("REQUEST_BODY: %s", "IGNORE"));
+//				}	
+            	LOGGER.info(String.format("REQUEST_BODY: %s" , requestBody));
+            	
 			} else {
 				LOGGER.info(String.format("REQUEST_BODY: %s" , "NULL"));
 			}

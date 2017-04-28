@@ -27,7 +27,7 @@ import com.xcompany.xproject.common.web.starter.exception.ParamsException;
 import com.xcompany.xproject.common.web.starter.http.APIResponse;
 import com.xcompany.xproject.common.web.starter.http.ResponseEntry;
 import com.xcompany.xproject.common.web.starter.test.user.serializers.AddUserSerializer;
-import com.xcompany.xproject.common.web.starter.test.user.service.UserService;
+import com.xcompany.xproject.common.web.starter.test.user.service.UserServiceImpl;
 
 //Spring Profiles provide a way to segregate parts of your application configuration 
 //and make it only available in certain environments. 
@@ -43,7 +43,7 @@ public class UserController {
 	@Autowired
 	private Environment environment;
 	@Autowired
-	private UserService userService;
+	private UserServiceImpl userService;
 	@Autowired
 	private CommonWebConfigurationService commonWebConfigurationService;
 	
@@ -110,7 +110,6 @@ public class UserController {
 		LOGGER.info(environment.getProperty("local.server.port"));
 		LOGGER.info(environment.getProperty("spring.application.name"));
 		LOGGER.info(this.commonWebConfigurationService.sayHello());
-		
 		if (environment.getProperty("spring.main.show-banner").equals("true")) {
 			//throw new PermissionException(3000, null, null);
 			//throw new ParamsException(4000, null, null, null);

@@ -19,7 +19,6 @@ com/xcompany/xproject/common/web/starter/http/ResponseEntry.class
 com/xcompany/xproject/common/web/starter/EnableCommonWebConfiguration.class
 com/xcompany/xproject/common/web/starter/exception/IOException.class
 com/xcompany/xproject/common/web/starter/CommonWebConfigurationSwagger$1.class
-com/xcompany/xproject/common/web/starter/filter/LoggingFilter$1.class
 com/xcompany/xproject/common/web/starter/exception/CommonExceptionHandler.class
 com/xcompany/xproject/common/web/starter/exception/UnknownException.class
 com/xcompany/xproject/common/web/starter/CommonWebConfiguration.class
