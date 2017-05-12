@@ -1,5 +1,6 @@
 com/xcompany/xproject/common/web/starter/test/Application.class
 com/xcompany/xproject/common/web/starter/test/user/service/UserService.class
+com/xcompany/xproject/common/web/starter/test/OAuth2ResourceServerConfig.class
 com/xcompany/xproject/common/web/starter/test/user/domain/UserDetail.class
 com/xcompany/xproject/common/web/starter/test/user/domain/User.class
 com/xcompany/xproject/common/web/starter/test/user/domain/UserRepositoryCustom$1.class
@@ -7,6 +8,7 @@ com/xcompany/xproject/common/web/starter/test/user/serializers/UserDetailSeriali
 com/xcompany/xproject/common/web/starter/test/user/service/UserServiceImpl.class
 com/xcompany/xproject/common/web/starter/test/user/domain/UserDetailRepository.class
 com/xcompany/xproject/common/web/starter/test/user/controller/UserController.class
+com/xcompany/xproject/common/web/starter/test/MethodSecurityConfig.class
 com/xcompany/xproject/common/web/starter/test/user/serializers/AddUserSerializer.class
 com/xcompany/xproject/common/web/starter/test/user/domain/UserRepositoryCustom.class
 com/xcompany/xproject/common/web/starter/test/user/serializers/UserSerializer.class

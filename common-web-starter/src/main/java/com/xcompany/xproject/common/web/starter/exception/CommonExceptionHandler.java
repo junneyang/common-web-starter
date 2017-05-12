@@ -34,12 +34,28 @@ public class CommonExceptionHandler {
 	@Autowired
 	private Environment environment;
 
+//	private HttpStatus getStatus(HttpServletRequest request) {
+//        Integer statusCode = (Integer) request.getAttribute("javax.servlet.error.status_code");
+//        if (statusCode == null) {
+//            return HttpStatus.INTERNAL_SERVER_ERROR;
+//        }
+//        try {
+//            return HttpStatus.valueOf(statusCode);
+//        } catch (Exception ex) {
+//            return HttpStatus.INTERNAL_SERVER_ERROR;
+//        }
+//    }
+	
 	@ExceptionHandler(value = Exception.class)
 	@ResponseStatus(HttpStatus.OK)  // 200
 	@ResponseBody
 	public Object exceptionHandler(HttpServletRequest request, HttpServletResponse response, Exception ex) {
 
 		LOGGER.error(ex.getMessage(), ex);
+		
+//		HttpStatus status = getStatus(request);
+//		LOGGER.info(status.toString());
+//		response.setStatus(status.value());
 		
 		APIResponseBuilder apiResponseBuilder = new APIResponse().createBuilder();
 		
@@ -75,7 +91,22 @@ public class CommonExceptionHandler {
 					.setData(null).setErrors(null);
 			}
 
-		} else {
+		} /*else if (ex instanceof AccessDeniedException) {
+			LOGGER.error("AccessDeniedException");
+			apiResponseBuilder.setCode(ResponseCode.PERMISSION_EXCEPTION);
+			Set<String> activeProfies = new HashSet<String>(Arrays.asList(this.environment.getActiveProfiles()));
+			if (activeProfies.contains("default") || activeProfies.contains("dev") || activeProfies.contains("test")) {
+				apiResponseBuilder.setMsg(ex.toString());
+			} else if (activeProfies.contains("prod")) {
+				apiResponseBuilder.setMsg(ex.getMessage());
+			} else {
+				apiResponseBuilder.setMsg(ex.getMessage());
+			}
+			
+			apiResponseBuilder.setObjects(null);
+			apiResponseBuilder.setData(null);
+			apiResponseBuilder.setErrors(null);
+		}*/ else {
 			LOGGER.error("UnknownException");
 			apiResponseBuilder.setCode(ResponseCode.UNKNOWN_EXCEPTION);
 			Set<String> activeProfies = new HashSet<String>(Arrays.asList(this.environment.getActiveProfiles()));

@@ -13,6 +13,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -101,9 +104,19 @@ public class UserController {
 	 *     | 4000  | 参数异常, 用户参数不合法
 	 *     | 5000  | 业务异常, 业务约束条件不满足
 	 */
+	//hasAuthority
+	//hasRole
+	@PreAuthorize("#oauth2.hasScope('read') and hasRole('ADMIN')")
 	@RequestMapping(value="/v1/test/", method=RequestMethod.GET, 
 			produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntry test(@RequestParam(name="name", required=false) String name) throws Exception {
+		
+		OAuth2Authentication authentication = (OAuth2Authentication)SecurityContextHolder.getContext().getAuthentication();
+		
+		LOGGER.info(authentication.getUserAuthentication().getPrincipal().toString());
+		LOGGER.info(authentication.getUserAuthentication().getAuthorities().toString());
+		LOGGER.info(authentication.getOAuth2Request().getScope().toString());
+		LOGGER.info(authentication.getOAuth2Request().getAuthorities().toString());
 		LOGGER.info(name);
 		
 		LOGGER.info(environment.toString());
@@ -130,6 +143,7 @@ public class UserController {
 	//int: [0-9]+
 	//uuid2: [0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}
 	//uuid: [0-9a-z]{32}
+	@PreAuthorize("#oauth2.hasScope('read')")
 	@RequestMapping(value="/v1/{id:[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}}/", method=RequestMethod.GET, 
 			produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntry getUser(@PathVariable UUID id) throws Exception {	
@@ -142,7 +156,7 @@ public class UserController {
 				.build().getEntry();
 	}
 	
-	
+	@PreAuthorize("#oauth2.hasScope('read') and #oauth2.hasScope('write')")
 	@RequestMapping(value="/v1/", method=RequestMethod.POST, 
 			consumes=MediaType.APPLICATION_JSON_UTF8_VALUE, produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntry addUser(@Valid @RequestBody AddUserSerializer userSerializer, BindingResult bindingResult) throws Exception {	
@@ -159,6 +173,7 @@ public class UserController {
 				.build().getEntry();
 	}
 	
+	@PreAuthorize("#oauth2.hasScope('read')")
 	//?size=2&page=0&sort=name,asc&sort=createTime,asc&startTime=1492417764000&endTime=2492417764000&name=aaa
 	@RequestMapping(value="/v1/", method=RequestMethod.GET, 
 			produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
@@ -180,6 +195,7 @@ public class UserController {
 		
 	}
 	
+	@PreAuthorize("#oauth2.hasScope('read')")
 	//?size=3&page=0&sort=name,asc&sort=createTime,desc&startTime=1492417764000&endTime=2492417764000&name=aaa
 	@RequestMapping(value="/v1/custom/", method=RequestMethod.GET, 
 			produces=MediaType.APPLICATION_JSON_UTF8_VALUE)

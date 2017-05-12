@@ -5,6 +5,7 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
@@ -27,11 +28,16 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Autowired
     private DataSource dataSource;
     
+    @Autowired
+    private Environment environment;
+    
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         security
+        .allowFormAuthenticationForClients()
         .tokenKeyAccess("permitAll()")
-        .checkTokenAccess("isAuthenticated()");
+        //.checkTokenAccess("isAuthenticated()");
+        .checkTokenAccess("permitAll()");
     }
     
     @Override
@@ -42,10 +48,11 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .secret("acmesecret")
                 .authorizedGrantTypes("password", "implicit", "refresh_token", "authorization_code", "client_credentials")
                 .scopes("read", "write")
-                .autoApprove(true)
+                //.autoApprove(true)
                 //.autoApprove("read", "write")
                 //.authorities("ROLE_USER")
-                .accessTokenValiditySeconds(30);
+                // 30 minutes
+                .accessTokenValiditySeconds(30 * 60);
                 //.redirectUris("http://example.com");
         //clients.jdbc(dataSource);
         //.passwordEncoder(new );
@@ -53,27 +60,29 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     }
     
 //    @Bean
-//	public JwtAccessTokenConverter jwtAccessTokenConverter() {
-//		JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-//		KeyPair keyPair = new KeyStoreKeyFactory(
-//				new ClassPathResource("keystore.jks"), "foobar".toCharArray())
-//				.getKeyPair("test");
-//		converter.setKeyPair(keyPair);
-//		return converter;
-//	}
+//    protected JwtAccessTokenConverter jwtTokenEnhancer() {
+//        String pwd = environment.getProperty("keystore.password");
+//        KeyStoreKeyFactory keyStoreKeyFactory = new KeyStoreKeyFactory(
+//                new ClassPathResource("jwt.jks"),
+//                pwd.toCharArray());
+//        JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
+//        converter.setKeyPair(keyStoreKeyFactory.getKeyPair("jwt"));
+//        return converter;
+//    }
     
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints
                 .tokenStore(tokenStore())
+                //.tokenEnhancer(jwtTokenEnhancer())
                 .authenticationManager(authenticationManager)
                 .userDetailsService(userDetailsService);
-                //.accessTokenConverter(jwtAccessTokenConverter());
     }
     
     @Bean
     public TokenStore tokenStore(){
         //return new InMemoryTokenStore(); //in memory token store
     	return new JdbcTokenStore(dataSource);
+    	//return new JwtTokenStore(jwtTokenEnhancer());
     }
 }

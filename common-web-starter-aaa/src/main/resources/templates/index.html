@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<title>Spring Security Example</title>
+</head>
+<body>
+	<div>
+		<p>Logged user: <span th:text="${#authentication.name}">[USERNAME]</span></p>
+		<p>Roles: <span th:text="${#authentication.authorities}">[ROLE_USER, ROLE_ADMIN]</span></p>
+
+		<p><a href="doc/index.html">apiDoc</a></p>
+		<p><a href="swagger-ui.html">apiTest</a></p>
+		
+		<p><a th:href="@{/logout}">Logout</a></p>
+	</div>
+</body>
+</html>
