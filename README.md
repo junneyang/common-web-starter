@@ -39,7 +39,7 @@ You Can Refer The `xproject-common-web-starter-test` Module
 - [x] HTTP请求、响应、状态码基础库。
 
 ### 2.3.Domain    
-- [x] BaseEntity支持。
+- [x] BaseEntity支持(is_deleted、时间)。
 - [x] Domain模型最佳实践, 不引入外键约束。
 - [x] Hibernate SessionFactory As Supplement Of JPA EntityManager。
 - [x] Spring Data JPA/Hibernate支持最佳实践示例，连表、分页、查询完善实例。
@@ -48,7 +48,7 @@ You Can Refer The `xproject-common-web-starter-test` Module
 - [x] 序列化、反序列化最佳实践示例。
 
 ### 2.5.Other
-- [ ] OAuth2权限管理。
+- [x] OAuth2权限管理。
 - [ ] 二级缓存、分布式缓存(spring boot 1.5.2 默认支持 hazelcast-3.7.5)。
 - [ ] 任务队列。
 - [ ] 定时任务。
@@ -56,7 +56,6 @@ You Can Refer The `xproject-common-web-starter-test` Module
 - [ ] 通知中心。
 - [ ] 分布式追踪。
 - [ ] 横向扩展、高可用。
-- [ ] Base Entity（is_deleted、时间）。
 - [ ] RPC（Thrift/gRPC）。
 - [ ] 同步、异步。
 - [ ] 进程管理、Docker、K8S集成。
