@@ -121,7 +121,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
            RemoteTokenServices tokenServices = new RemoteTokenServices();
            tokenServices.setClientId("acme");
            tokenServices.setClientSecret("acmesecret");
-           tokenServices.setCheckTokenEndpointUrl("http://10.67.13.168:8001/api/xproject-common-web-starter-aaa/oauth/check_token");
+           tokenServices.setCheckTokenEndpointUrl("http://localhost:8001/api/xproject-common-web-starter-aaa/oauth/check_token");
            return tokenServices;
         }
     }
